@@ -1,0 +1,822 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#18091f">
+<title>إلى منورتي ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Amiri:wght@400;700&display=swap');
+
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    color:#fff0fa;
+    font-family:'Cairo',sans-serif;
+    background:radial-gradient(circle at top,#54205e,#210d30 45%,#100717 100%);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background-image:
+    radial-gradient(#fff 1px,transparent 1.5px),
+    radial-gradient(#ff8bdc 1px,transparent 1.5px);
+    background-size:90px 90px,140px 140px;
+    opacity:.3;
+}
+
+button{
+    font-family:'Cairo',sans-serif;
+    border:1px solid #ff85d7;
+    color:white;
+    padding:12px 24px;
+    border-radius:50px;
+    cursor:pointer;
+    background:linear-gradient(135deg,#a32c85,#702c9c);
+    box-shadow:0 0 20px #ff69c755;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.04);
+    box-shadow:0 0 30px #ff69c788;
+}
+
+button:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+}
+
+.moon{
+    font-size:90px;
+    filter:drop-shadow(0 0 25px #e68aff);
+    animation:moonFloat 4s ease-in-out infinite;
+}
+
+@keyframes moonFloat{
+    50%{transform:translateY(-12px)}
+}
+
+.hero h1{
+    font-family:'Amiri',serif;
+    color:#ffc9ee;
+    font-size:clamp(45px,10vw,75px);
+    text-shadow:0 0 25px #ff68c6;
+    margin:10px 0;
+}
+
+.hero p{
+    font-family:'Amiri',serif;
+    font-size:22px;
+    color:#f4d5fa;
+    line-height:1.9;
+}
+
+.section{
+    width:min(94%,900px);
+    margin:22px auto;
+    padding:25px 20px;
+    background:rgba(44,17,56,.75);
+    border:1px solid #d76bb5;
+    border-radius:24px;
+    box-shadow:0 0 25px #d34fa51c;
+    backdrop-filter:blur(8px);
+}
+
+h2{
+    text-align:center;
+    color:#ffc6eb;
+    font-family:'Amiri',serif;
+    font-size:29px;
+    margin-top:0;
+}
+
+.letter{
+    font-family:'Amiri',serif;
+    font-size:21px;
+    line-height:2.1;
+    text-align:center;
+    white-space:pre-line;
+}
+
+.signature{
+    text-align:center;
+    color:#e9b5f4;
+    font-family:'Amiri',serif;
+}
+
+.hidden{display:none!important}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.card{
+    padding:18px 12px;
+    background:linear-gradient(145deg,#431c51,#241130);
+    border:1px solid #b857a8;
+    border-radius:20px;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.card h3{color:#ffd0ef;margin:0}
+.card p{font-size:14px;color:#e3c5ee}
+
+.lockInfo{
+    font-size:13px;
+    color:#dfb6e9;
+    min-height:25px;
+}
+
+#letterDisplay{
+    margin-top:20px;
+    background:#190d24;
+    padding:20px;
+    border-radius:18px;
+    border:1px solid #b65ba8;
+}
+
+.timer{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.timebox{
+    background:#3b1b4b;
+    border:1px solid #b65ba8;
+    border-radius:12px;
+    padding:10px;
+    min-width:70px;
+    text-align:center;
+}
+
+.timebox strong{
+    display:block;
+    color:#ffd2ed;
+    font-size:22px;
+}
+
+.timebox small{color:#dfbde9}
+
+.gameArea{
+    position:relative;
+    height:280px;
+    overflow:hidden;
+    background:radial-gradient(circle,#52235f,#1d0d29);
+    border:1px solid #a54ba0;
+    border-radius:20px;
+}
+
+.gameHeart{
+    position:absolute;
+    padding:0;
+    border:none;
+    background:none;
+    box-shadow:none;
+    font-size:32px;
+    animation:float 2s infinite alternate;
+}
+
+@keyframes float{
+    from{transform:translateY(5px)}
+    to{transform:translateY(-8px)}
+}
+
+.score{
+    text-align:center;
+    color:#ffc9e9;
+    font-size:19px;
+    margin:15px;
+}
+
+.surprise{text-align:center}
+
+.surpriseText{
+    font-family:'Amiri',serif;
+    font-size:22px;
+    line-height:2;
+    color:#ffe3f5;
+    margin-top:20px;
+    white-space:pre-line;
+}
+
+.floatHeart{
+    position:fixed;
+    pointer-events:none;
+    z-index:100;
+    font-size:25px;
+    animation:rise 1.5s forwards;
+}
+
+@keyframes rise{
+    to{
+        transform:translateY(-150px);
+        opacity:0;
+    }
+}
+
+footer{
+    text-align:center;
+    padding:35px 10px;
+    color:#e8b5ed;
+    font-family:'Amiri',serif;
+}
+
+@media(max-width:650px){
+    .cards{grid-template-columns:1fr}
+    .section{padding:20px 14px}
+    .letter{font-size:19px}
+    .hero p{font-size:19px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- شاشة البداية -->
+
+<header class="hero" id="welcome">
+
+    <div class="moon">🌙</div>
+
+    <p>♡ عالم صغير صنعته لكِ ♡</p>
+
+    <h1>إلى منورتيييي</h1>
+
+    <p>
+        هناك شيء صغير صنعته لكِ...<br>
+        لكنه يحمل مشاعر أكبر من أن أستطيع وصفها.
+    </p>
+
+    <button onclick="openSite()">افتحي قلبي ❤️</button>
+
+</header>
+
+<main id="content" class="hidden">
+
+<!-- رسالة الحب -->
+
+<section class="section">
+
+    <h2>إلى منورتي، أجمل صدفة في حياتي 💌</h2>
+
+    <div class="letter">
+منذ 3 نوفمبر 2022، صار في حياتي شيء مختلف...
+شيء يجعل الأيام العادية أجمل، ويجعلني أبتسم أحيانًا دون أن أنتبه، فقط لأنني تذكرتك.
+
+لا أريد أن أقول لكِ كلامًا مثاليًا، أريد فقط أن تعرفي أنكِ تعنين لي الكثير. أحب تفاصيلك، وأحب وجودك، وحتى اللحظات التي لا نعرف فيها ماذا نقول، يكفيني أنكِ أنتِ.
+
+أتمنى أن أكون لكِ مكانًا آمنًا، وشخصًا تستطيعين أن تكوني معه على طبيعتك تمامًا؛ تضحكين، تتعبين، تحكين، أو تصمتين دون أن تحتاجي إلى أن تتظاهري بأنك بخير.
+
+لو استطعت أن أترك لكِ شيئًا واحدًا في قلبك، فسيكون هذا:
+
+أنتِ محبوبة، وغالية، ولا تحتاجين إلى أن تكوني مثالية كي تستحقي كل هذا الحب.
+
+أنا أحبك لأنك أنتِ، يا منورتي. ❤️
+    </div>
+
+    <p class="signature">
+        — من شخص قلبه يبتسم كلما تذكركِ
+    </p>
+
+</section>
+
+<!-- الرسائل الثلاث -->
+
+<section class="section">
+
+    <h2>ثلاث رسائل صغيرة من قلبي 💗</h2>
+
+    <p style="text-align:center">
+        رسالة الآن، ورسالة بعد 6 ساعات، ورسالة أخرى بعد 12 ساعة.
+    </p>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>🌷 عندما تشتاقين إليّ</h3>
+            <p>رسالة صغيرة تذكركِ كم أنتِ قريبة من قلبي.</p>
+            <button id="btn0" onclick="showLetter(0)">
+                افتحي الرسالة
+            </button>
+            <div class="lockInfo" id="info0"></div>
+        </div>
+
+        <div class="card">
+            <h3>🌙 عندما يتعب قلبك</h3>
+            <p>تذكير بأنكِ لستِ وحدك.</p>
+            <button id="btn1" onclick="showLetter(1)" disabled>
+                🔒 مغلقة
+            </button>
+            <div class="lockInfo" id="info1"></div>
+        </div>
+
+        <div class="card">
+            <h3>💞 شيء لم أخبركِ به</h3>
+            <p>كلمات خبأتها لكِ لتصل في وقتها.</p>
+            <button id="btn2" onclick="showLetter(2)" disabled>
+                🔒 مغلقة
+            </button>
+            <div class="lockInfo" id="info2"></div>
+        </div>
+
+    </div>
+
+    <div id="letterDisplay" class="hidden">
+
+        <h2 id="letterTitle"></h2>
+
+        <div class="letter" id="letterBody"></div>
+
+    </div>
+
+</section>
+
+<!-- لعبة القلوب -->
+
+<section class="section">
+
+    <h2>Catch My Heart ❤️</h2>
+
+    <p style="text-align:center">
+        التقطي 10 قلوب لتكتشفي رسالة صغيرة منّي.
+    </p>
+
+    <div class="score" id="score">
+        القلوب: 0 / 10
+    </div>
+
+    <div class="gameArea" id="gameArea"></div>
+
+    <div style="text-align:center;margin-top:15px">
+        <button onclick="startGame()" id="startGame">
+            ابدئي اللعبة 🎮
+        </button>
+    </div>
+
+    <div id="gameWin" class="hidden letter">
+        🎉 أحسنتِ يا منورتي!
+
+        لو كان بإمكاني، لجمعت كل الأشياء الجميلة في العالم ووضعتها بين يديكِ.
+
+        لكن بما أنني لا أملك ذلك، سأعطيكِ قلبي... وهو لكِ أصلًا. ❤️
+    </div>
+
+</section>
+
+<!-- عداد العلاقة بدون صور -->
+
+<section class="section">
+
+    <h2>منذ أن بدأت حكايتنا ❤️</h2>
+
+    <p style="text-align:center">
+        3 نوفمبر 2022
+    </p>
+
+    <div class="timer" id="timer"></div>
+
+    <p class="signature">
+        وكل يوم يضيف ذكرى أجمل إلى حكايتنا ❤️
+    </p>
+
+</section>
+
+<!-- المفاجأة -->
+
+<section class="section surprise">
+
+    <h2>مفاجأة أخيرة لكِ 🎁</h2>
+
+    <p>هناك شيء صغير ينتظر منكِ الضغط...</p>
+
+    <button onclick="showSurprise()">
+        افتحي مفاجأتك ✨
+    </button>
+
+    <div id="surpriseText" class="hidden surpriseText">
+يا منورتي،
+
+لو سألتني ماذا أتمنى، فلن أطلب أيامًا مثالية ولا حياة بلا تعب.
+
+أتمنى فقط أن نمنح بعضنا الحب حين تكون الأيام سهلة، والحنان حين تكون صعبة، والصدق في كل وقت.
+
+أتمنى أن تظل ضحكتك حاضرة، وأن لا تنسي أبدًا كم أنتِ جميلة في عيني، وكم يسعدني أنكِ موجودة في هذا العالم... وفي حياتي.
+
+أحبك، بكل هدوء، وبكل ما في قلبي. ❤️
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    صُنِع بكل الحب... من أجلكِ يا منورتي ♡
+</footer>
+
+<script>
+
+/* شاشة الدخول */
+
+function openSite(){
+
+    document.getElementById("welcome").style.display="none";
+
+    document.getElementById("content").classList.remove("hidden");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    for(let i=0;i<12;i++){
+        setTimeout(()=>{
+            createHeart(
+                window.innerWidth/2,
+                window.innerHeight/2
+            );
+        },i*100);
+    }
+}
+
+/* نظام الرسائل */
+
+const STORAGE_KEY="monwarty_love_v2";
+
+let data;
+
+try{
+    data=JSON.parse(localStorage.getItem(STORAGE_KEY));
+}catch(e){
+    data=null;
+}
+
+if(!data || !Number.isFinite(data.start) || !Array.isArray(data.opened)){
+    data={
+        start:Date.now(),
+        opened:[false,false,false]
+    };
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+}
+
+data.opened=[
+    !!data.opened[0],
+    !!data.opened[1],
+    !!data.opened[2]
+];
+
+const letters=[
+
+{
+title:"عندما تشتاقين إليّ ❤️",
+text:`إذا اشتقتِ إليّ في لحظة، تخيّلي أنني أبتسم الآن وأنا أفكر بكِ.
+
+قد لا أكون بجانبك في كل ثانية، لكن هناك جزءًا من يومي يحمل اسمك دائمًا.
+
+أتمنى لو أستطيع أن أختصر المسافة، وأجلس قربك، وأطمئن عليكِ بنفسي.
+
+إلى أن يحدث ذلك، تذكّري أن لكِ قلبًا يحبك، وأنكِ لستِ بعيدة عني كما قد يبدو.`
+},
+
+{
+title:"عندما يتعب قلبك 🌙",
+text:`يا منورتي، لا بأس إن لم يكن يومك جميلًا، ولا بأس إن لم تستطيعي أن تكوني قوية طوال الوقت.
+
+لا تضغطي على نفسك كي ترضي العالم. خذي وقتك، ارتاحي، وابكي إن احتجتِ، ثم عودي عندما تشعرين أنك مستعدة.
+
+لا أريد منكِ أن تكوني بخير دائمًا؛ أريد فقط أن تعرفي أنكِ تستحقين اللطف حتى في أصعب لحظاتك.
+
+لو استطعت، لخففت عنك كل ما يثقل قلبك.`
+},
+
+{
+title:"شيء لم أخبركِ به 💞",
+text:`ربما لا أقول ذلك كل مرة بالطريقة التي تستحقينها، لكن وجودك غيّر معنى أشياء كثيرة بالنسبة لي.
+
+صرت أجد السعادة في تفاصيل بسيطة، في رسالة منكِ، في صوتكِ، في معرفة أنكِ بخير.
+
+لا أعرف كيف سيكون شكل الأيام القادمة، لكنني أعرف أنني ممتن جدًا لأن طريقنا تقاطع في 3 نوفمبر 2022.
+
+أنتِ لستِ مجرد ذكرى جميلة؛ أنتِ شخص أتمنى أن أصنع معه ذكريات أجمل، وأن أختار حبه كل يوم، لا بالكلام فقط، بل بالاهتمام والصدق والأفعال.`
+}
+
+];
+
+const unlockAfter=[
+    0,
+    6*60*60*1000,
+    12*60*60*1000
+];
+
+function elapsed(){
+    return Math.max(0,Date.now()-data.start);
+}
+
+function canOpen(i){
+    return elapsed()>=unlockAfter[i];
+}
+
+function formatTime(ms){
+
+    ms=Math.max(0,ms);
+
+    let h=Math.floor(ms/3600000);
+    let m=Math.floor(ms%3600000/60000);
+    let s=Math.floor(ms%60000/1000);
+
+    return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+}
+
+/* تحديث أزرار الرسائل */
+
+function updateLetters(){
+
+    for(let i=0;i<3;i++){
+
+        const btn=document.getElementById("btn"+i);
+        const info=document.getElementById("info"+i);
+
+        if(data.opened[i]){
+
+            btn.disabled=false;
+            btn.textContent="إعادة قراءة الرسالة ❤️";
+            info.textContent="هذه الرسالة أصبحت لكِ دائمًا.";
+
+        }
+
+        else if(canOpen(i)){
+
+            btn.disabled=false;
+            btn.textContent="افتحي الرسالة 💌";
+            info.textContent="وصل وقت رسالتك.";
+
+        }
+
+        else{
+
+            btn.disabled=true;
+            btn.textContent="🔒 مغلقة";
+
+            info.textContent=
+            "تفتح بعد: "+
+            formatTime(unlockAfter[i]-elapsed());
+
+        }
+
+    }
+
+}
+
+/* عرض رسالة */
+
+function showLetter(i){
+
+    if(!canOpen(i)&&!data.opened[i]){
+        return;
+    }
+
+    data.opened[i]=true;
+
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+
+    document.getElementById("letterTitle").textContent=letters[i].title;
+
+    document.getElementById("letterBody").textContent=letters[i].text;
+
+    document.getElementById("letterDisplay").classList.remove("hidden");
+
+    document.getElementById("letterDisplay").scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+    updateLetters();
+
+}
+
+/* عداد العلاقة */
+
+function updateTimer(){
+
+    const start=new Date(2022,10,3,0,0,0);
+
+    let diff=Math.max(0,Date.now()-start.getTime());
+
+    let days=Math.floor(diff/86400000);
+
+    diff%=86400000;
+
+    let hours=Math.floor(diff/3600000);
+
+    diff%=3600000;
+
+    let minutes=Math.floor(diff/60000);
+
+    diff%=60000;
+
+    let seconds=Math.floor(diff/1000);
+
+    document.getElementById("timer").innerHTML=`
+
+        <div class="timebox">
+            <strong>${days}</strong>
+            <small>يوم</small>
+        </div>
+
+        <div class="timebox">
+            <strong>${hours}</strong>
+            <small>ساعة</small>
+        </div>
+
+        <div class="timebox">
+            <strong>${minutes}</strong>
+            <small>دقيقة</small>
+        </div>
+
+        <div class="timebox">
+            <strong>${seconds}</strong>
+            <small>ثانية</small>
+        </div>
+    `;
+
+    updateLetters();
+
+}
+
+setInterval(updateTimer,1000);
+updateTimer();
+
+/* القلوب المتحركة */
+
+function createHeart(x,y){
+
+    const heart=document.createElement("div");
+
+    heart.className="floatHeart";
+
+    heart.textContent=["💗","❤️","💕","💘","💖"][
+        Math.floor(Math.random()*5)
+    ];
+
+    heart.style.left=x+"px";
+    heart.style.top=y+"px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },1500);
+
+}
+
+document.addEventListener("click",function(e){
+
+    if(e.target.closest("button")){
+        createHeart(e.clientX,e.clientY);
+    }
+
+});
+
+/* لعبة جمع 10 قلوب */
+
+let score=0;
+let gameRunning=false;
+let gameTimers=[];
+
+function spawnHeart(){
+
+    if(!gameRunning)return;
+
+    const area=document.getElementById("gameArea");
+
+    const heart=document.createElement("button");
+
+    heart.className="gameHeart";
+    heart.textContent="💗";
+
+    heart.style.left=Math.random()*85+"%";
+    heart.style.top=Math.random()*75+"%";
+
+    area.appendChild(heart);
+
+    heart.onclick=function(){
+
+        if(!gameRunning)return;
+
+        score++;
+
+        document.getElementById("score").textContent=
+        "القلوب: "+score+" / 10";
+
+        const rect=heart.getBoundingClientRect();
+
+        createHeart(rect.left,rect.top);
+
+        heart.remove();
+
+        if(score>=10){
+
+            gameRunning=false;
+
+            area.innerHTML="✨ لقد جمعتِ كل القلوب ✨";
+
+            document.getElementById("gameWin").classList.remove("hidden");
+
+            document.getElementById("startGame").textContent="إعادة اللعب";
+
+        }else{
+            spawnHeart();
+        }
+
+    };
+
+    const timer=setTimeout(()=>{
+
+        if(heart.isConnected&&gameRunning){
+            heart.remove();
+        }
+
+    },4000);
+
+    gameTimers.push(timer);
+
+}
+
+function startGame(){
+
+    gameTimers.forEach(clearTimeout);
+    gameTimers=[];
+
+    score=0;
+    gameRunning=true;
+
+    document.getElementById("score").textContent="القلوب: 0 / 10";
+
+    document.getElementById("gameWin").classList.add("hidden");
+
+    document.getElementById("gameArea").innerHTML="";
+
+    document.getElementById("startGame").textContent="اللعبة بدأت...";
+
+    for(let i=0;i<4;i++){
+        spawnHeart();
+    }
+
+}
+
+/* المفاجأة */
+
+function showSurprise(){
+
+    document.getElementById("surpriseText").classList.remove("hidden");
+
+    document.getElementById("surpriseText").scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+    for(let i=0;i<20;i++){
+
+        setTimeout(()=>{
+
+            createHeart(
+                Math.random()*window.innerWidth,
+                window.innerHeight*.7
+            );
+
+        },i*100);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
